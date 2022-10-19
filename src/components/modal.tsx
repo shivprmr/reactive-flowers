@@ -27,7 +27,7 @@ const Modal = ({ images, defaultIndex, onClose }: modalType) => {
   };
   return (
     <>
-      <div style={{zIndex: 1}}>
+      <div style={{ zIndex: 1 }}>
         <img src={images[currentIndex].image} alt={"click me"} />
         <button
           className="dismiss"
@@ -41,7 +41,7 @@ const Modal = ({ images, defaultIndex, onClose }: modalType) => {
         <RightArrow onClick={handleOnRightArrowClick} />
       </div>
       <div
-        style={{zIndex: 0}}
+        style={{ zIndex: 0 }}
         className="lightboxOverlay dismiss"
         onClick={onClose}
       />
