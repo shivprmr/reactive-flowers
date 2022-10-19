@@ -1,30 +1,29 @@
 import React, { useState } from "react";
-
-import allImages from "../images/images.json";
 import Modal from "./modal";
+import { images } from "../data/images";
 
 function ImageContainer() {
-  const [clickedImage, setCurrentImage] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  const onImageClick = (itemLink: any, index: any) => {
-    setCurrentIndex(index);
-    setCurrentImage(itemLink);
-  };
-
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   return (
     <div className="image-container-row">
-      {allImages.smallImages.map((item, index) => (
-        <div key={index}>
+      {images.map((image, index) => (
+        <div key={image.key}>
           <img
-            src={item.link}
-            alt={item.text}
-            onClick={() => onImageClick(item.link, index)}
+            src={image.thumbnail}
+            onClick={() => {
+              setCurrentIndex(index);
+              setModalOpen(true);
+            }}
           />
         </div>
       ))}
-      {clickedImage && (
-        <Modal setCurrentImage={setCurrentImage} imgIndex={currentIndex} />
+      {modalOpen && (
+        <Modal
+          images={images}
+          defaultIndex={currentIndex}
+          onClose={() => setModalOpen(false)}
+        />
       )}
     </div>
   );
