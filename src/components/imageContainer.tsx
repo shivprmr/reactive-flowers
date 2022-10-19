@@ -5,7 +5,7 @@ import Modal from "./modal";
 
 function ImageContainer() {
   const [clickedImage, setCurrentImage] = useState<string | null>(null);
-  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const onImageClick = (itemLink: any, index: any) => {
     setCurrentIndex(index);
